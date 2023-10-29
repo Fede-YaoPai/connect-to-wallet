@@ -5,6 +5,11 @@
     </h2>
   </div>
   <div class="header-right">
-    <button class="cursor-pointer" (click)="connectToMetamask()">Connect to Wallet</button>
+    <button
+      class="connect-to-wallet-cta"
+      [disabled]="!!(metamaskWallet$ | async)"
+      (click)="connectToMetamask()">
+      {{ (metamaskWallet$ | async) ? 'Wallet connected' : 'Connect to Wallet' }}
+    </button>
   </div>
 </div>

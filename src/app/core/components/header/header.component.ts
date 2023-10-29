@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { MetamaskHelper } from '../../utils/metamask-helper';
 import { MetamaskWalletService } from '../../services/metamask-wallet/metamask-wallet.service';
+import { Observable } from 'rxjs';
+import { MetamaskWallet } from '../../models/metamask-wallet.models';
 
 
 @Component({
@@ -10,7 +12,11 @@ import { MetamaskWalletService } from '../../services/metamask-wallet/metamask-w
 })
 export class HeaderComponent {
 
-  constructor(private metamaskWalletService: MetamaskWalletService) {}
+  public readonly metamaskWallet$: Observable<MetamaskWallet | null>;
+
+  constructor(private metamaskWalletService: MetamaskWalletService) {
+    this.metamaskWallet$ = this.metamaskWalletService.metamaskWallet;
+  }
 
   public async connectToMetamask(): Promise<void> {
     if (MetamaskHelper.metamaskInstalled()) {

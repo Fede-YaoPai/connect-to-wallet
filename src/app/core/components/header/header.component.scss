@@ -1,4 +1,34 @@
+$ctaBackground: blueviolet;
+$ctaColor: white;
+
 .header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+
+  .connect-to-wallet-cta {
+    cursor: pointer;
+    outline: none;
+    border: none;
+    color: $ctaColor;
+    background-color: $ctaBackground;
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+    font-weight: bold;
+    border: 2px solid transparent;
+
+
+    &:hover {
+      background-color: $ctaColor;
+      color: $ctaBackground;
+      border-color: $ctaBackground;
+
+      transition: all 0.33s;
+    }
+
+    &:disabled {
+      pointer-events: none;
+      opacity: 0.2;
+    }
+  }
 }
