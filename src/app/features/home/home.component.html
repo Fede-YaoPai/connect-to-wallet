@@ -1,0 +1,13 @@
+<div class="home p-3">
+  <div *ngIf="metamaskWallet$ | async as wallet; else noWalletFound">
+    <h3 style="color: forestgreen">Metamask Wallet connected!</h3>
+    <p><span class="font-bold">Account address:</span> {{ wallet.address }}</p>
+    <p><span class="font-bold">Account balance:</span> {{ wallet.balance }}</p>
+  </div>
+</div>
+
+<ng-template #noWalletFound>
+  <p style="color: red">
+    No Metamask Wallet found. Please use the button on the top right to connect to your Wallet!
+  </p>
+</ng-template>
