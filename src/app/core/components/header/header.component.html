@@ -7,9 +7,15 @@
   <div class="header-right">
     <button
       class="connect-to-wallet-cta"
-      [disabled]="!!(metamaskWallet$ | async)"
+      [disabled]="!!(metamaskWallet$ | async) || showInstallMetamaskPrompt"
       (click)="connectToMetamask()">
-      {{ (metamaskWallet$ | async) ? 'Wallet connected' : 'Connect to Wallet' }}
+      {{
+        showInstallMetamaskPrompt ?
+          'Connection failed' :
+          (
+            (metamaskWallet$ | async) ? 'Wallet connected' : 'Connect to Wallet'
+          )
+      }}
     </button>
   </div>
 </div>

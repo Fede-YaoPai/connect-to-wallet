@@ -14,6 +14,8 @@ export class HeaderComponent {
 
   public readonly metamaskWallet$: Observable<MetamaskWallet | null>;
 
+  public showInstallMetamaskPrompt: boolean = false;
+
   constructor(private metamaskWalletService: MetamaskWalletService) {
     this.metamaskWallet$ = this.metamaskWalletService.metamaskWallet;
   }
@@ -32,6 +34,8 @@ export class HeaderComponent {
       }
     } else {
       console.log('Please install MetaMask!');
+
+      this.showInstallMetamaskPrompt = true;
     }
   }
 
