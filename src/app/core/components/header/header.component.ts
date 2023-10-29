@@ -23,7 +23,7 @@ export class HeaderComponent {
       const accountAddress: string | undefined = await MetamaskHelper.getAccount(0);
 
       if (accountAddress) {
-        const balance = await MetamaskHelper.getAccountBalance(accountAddress);
+        const balance: string = await MetamaskHelper.getAccountBalance(accountAddress);
 
         this.metamaskWalletService.setMetamaskWallet({
           address: accountAddress,
